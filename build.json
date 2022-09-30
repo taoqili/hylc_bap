@@ -18,7 +18,8 @@
   "libraryTarget": "umd",
   "externals": {
     "react": "var window.React",
-    "react-dom": "var window.ReactDOM"
+    "react-dom": "var window.ReactDOM",
+    "echarts": "var window.echarts"
   },
   "plugins": [
     [

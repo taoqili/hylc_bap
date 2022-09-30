@@ -16,33 +16,37 @@ export default () => {
     navigate(item?.props?.path)
   }, [])
 
+  if (isQiankun) {
+    return (
+      <div className={'lc-bap-main'}>
+        <Outlet/>
+      </div>
+    )
+  }
+
   return (
     <div className={'lc-bap-layout-wrapper'}>
-      {
-        !isQiankun
-          ? <Layout className={'lc-bap-layout'}>
-            <Sider theme={'light'} collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-              <div className="logo">
-                经营分析平台
-              </div>
-              <Menu
-                defaultSelectedKeys={[defaultMenu]}
-                mode="inline"
-                theme={'light'}
-                items={menus}
-                onSelect={(item) => handleMenuChange(item)}
-              />
-            </Sider>
-            <Layout>
-              <Content>
-                <div className={'lc-bap-content'}>
-                  <Outlet/>
-                </div>
-              </Content>
-            </Layout>
-          </Layout>
-          : <Outlet/>
-      }
+      <Layout className={'lc-bap-layout'}>
+        <Sider theme={'light'} collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
+          <div className="logo">
+            经营分析平台
+          </div>
+          <Menu
+            defaultSelectedKeys={[defaultMenu]}
+            mode="inline"
+            theme={'light'}
+            items={menus}
+            onSelect={(item) => handleMenuChange(item)}
+          />
+        </Sider>
+        <Layout>
+          <Content>
+            <div className={'lc-bap-single-main'}>
+              <Outlet/>
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
     </div>
   )
 }
