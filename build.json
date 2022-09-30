@@ -1,0 +1,32 @@
+{
+  "entry": {
+    "index": "./src/index.tsx"
+  },
+  "vendor": false,
+  "devServer": {
+    "historyApiFallback": true
+  },
+  "alias": {
+    "@": "./src"
+  },
+  "devPublicPath": "/",
+  "publicPath": "/",
+  "sourceMap": true,
+  "hash": "contenthash",
+  "outputDir": "dist",
+  "library": "HYLC_BAP",
+  "libraryTarget": "umd",
+  "externals": {
+    "react": "var window.React",
+    "react-dom": "var window.ReactDOM"
+  },
+  "plugins": [
+    [
+      "build-plugin-react-app"
+    ],
+    [
+      "build-plugin-antd"
+    ],
+    "./build.plugin.js"
+  ]
+}
