@@ -9,7 +9,6 @@ export * from './menu'
 export const apiBaseUrl = process.env.API_BASE_URL
 
 
-
 // 默认异常提醒语
 export const defaultErrMessage = '系统异常，请稍后重试！'
 

@@ -5,7 +5,7 @@ import { isQiankun } from "@/config"
 import App from './App'
 
 const render = (props: Record<any, any> = {}) => {
-  const { container } = props
+  const {container} = props
   const target = document.querySelector('#app')
   ReactDOM.render(
     <React.StrictMode>
@@ -23,11 +23,12 @@ if (!isQiankun) {
 
 
 export async function bootstrap() {
-  console.log('sp lcp bootstrap');
+  console.log('bootstrap');
 }
 
 let initProps: Record<any, any> = {}
-export async function mount(props: Record<any ,any>) {
+
+export async function mount(props: Record<any, any>) {
   initProps = props
   render(props)
 }
@@ -35,7 +36,7 @@ export async function mount(props: Record<any ,any>) {
 export async function unmount() {
 }
 
-export async function update(props: Record<any ,any>) {
+export async function update(props: Record<any, any>) {
   render({
     ...initProps,
     pageConfig: {

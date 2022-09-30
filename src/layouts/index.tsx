@@ -12,7 +12,7 @@ export default () => {
   const [collapsed, setCollapsed] = useState(false)
 
   const handleMenuChange = useCallback((menu: any) => {
-    const { item } = menu
+    const {item} = menu
     navigate(item?.props?.path)
   }, [])
 
