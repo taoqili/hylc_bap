@@ -1,10 +1,15 @@
 import React, { useCallback, useState } from 'react'
 import { Outlet, useNavigate } from "react-router-dom"
-import { isQiankun, menus } from "@/config"
+import { isQiankun, menus, rootPath } from "@/config"
 import { Layout, Menu } from "antd"
 import './index.less'
 
 const {Sider, Content} = Layout
+
+const realMenus = menus.map(item => {
+  item.path = `${rootPath}${item.path}`.replace('//', '/')
+  return item
+})
 
 export default () => {
   const defaultMenu = menus[0].key
@@ -35,7 +40,7 @@ export default () => {
             defaultSelectedKeys={[defaultMenu]}
             mode="inline"
             theme={'light'}
-            items={menus}
+            items={realMenus}
             onSelect={(item) => handleMenuChange(item)}
           />
         </Sider>

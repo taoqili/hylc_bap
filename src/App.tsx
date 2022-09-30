@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import { Route, Routes, useLocation } from "react-router-dom"
+import { Route, Routes, useLocation, Navigate } from "react-router-dom"
 import Layout from '@/layouts'
 import NotFound from "@/pages/NotFound"
 import Home from '@/pages/Home'
-import { routes } from '@/config'
-import { rootPath } from "@/config"
+import { routes, rootPath } from '@/config'
 
 export default (props: Record<any, any>) => {
   const location = useLocation()
@@ -17,18 +16,20 @@ export default (props: Record<any, any>) => {
       ROUTE_CHANGE: fullPath,
     })
   }, [location.pathname, location.search])
-
   return (
     <div className={'lc-bap-view-wrapper'}>
       <Routes>
+        <Route path={'/'} element={<Navigate to={rootPath} replace />} />
         <Route path={rootPath} element={<Layout/>}>
           <Route index element={<Home/>}/>
           {
             routes.map((item) => {
-              const { element, ...rest } = item || {}
+              const { path, element, ...rest } = item || {}
+
               return (
                 <Route
                   {...rest}
+                  path={path.replace(/^\//, '')}
                   element={
                     <React.Suspense fallback={<>loading...</>}>
                       {element}
