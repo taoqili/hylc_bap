@@ -1,6 +1,7 @@
-import React from 'react'
-import EChartsDemo from '@/pages/EChartsDemo'
-import Render from '@/pages/Render'
+import React, {lazy} from 'react'
+
+const EChartsDemo = lazy(() => import('@/pages/EChartsDemo'))
+const Render = lazy(() => import('@/pages/Render'))
 
 export const routes =  [
   {

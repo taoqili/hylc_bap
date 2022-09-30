@@ -25,7 +25,16 @@ export default (props: Record<any, any>) => {
           <Route index element={<Home/>}/>
           {
             routes.map((item) => {
-              return <Route {...item} />
+              const { element, ...rest } = item || {}
+              return (
+                <Route
+                  {...rest}
+                  element={
+                    <React.Suspense fallback={<>loading...</>}>
+                      {element}
+                    </React.Suspense>}
+                />
+              )
             })
           }
           <Route path={'*'} element={<NotFound/>}/>
