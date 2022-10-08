@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReactECharts from 'echarts-for-react'
+import Charts from '@/components/Charts'
 
 const optionFromServer = {
   title: {
@@ -101,23 +101,20 @@ export default () => {
   const [option, setOption] = useState({})
 
   useEffect(() => {
-    setTimeout(() => {
-      setOption(optionFromServer)
-    })
+    setOption(optionFromServer)
     setTimeout(() => {
       setOption({
         ...optionFromServer,
         title: {
-          text: 'asdfasdf'
+          text: '这是变化之后的标题'
         }
       })
-
     }, 3000)
   }, [])
 
   return (
     <div className={'wrapper'}>
-      <ReactECharts option={option} />
+      <Charts option={option} />
     </div>
   )
 }
