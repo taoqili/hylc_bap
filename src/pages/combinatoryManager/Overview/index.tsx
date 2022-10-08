@@ -16,7 +16,9 @@ export default (props: CombinatoryOverviewProps) => {
           type === 'multiple'
             ? <>
               <Col span={6}>
-                <Card>产品总规模</Card>
+                <Card>
+                  dsfasdf
+                </Card>
               </Col>
               <Col span={6}><Card>产品数量</Card></Col>
               <Col span={6}><Card>产品正回购</Card></Col>

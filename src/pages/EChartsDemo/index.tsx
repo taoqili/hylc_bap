@@ -104,6 +104,15 @@ export default () => {
     setTimeout(() => {
       setOption(optionFromServer)
     })
+    setTimeout(() => {
+      setOption({
+        ...optionFromServer,
+        title: {
+          text: 'asdfasdf'
+        }
+      })
+
+    }, 3000)
   }, [])
 
   return (
