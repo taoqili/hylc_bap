@@ -1,19 +1,36 @@
 import React, {lazy} from 'react'
+import { RouteProps } from 'react-router-dom'
 
 const EChartsDemo = lazy(() => import('@/pages/EChartsDemo'))
 const Render = lazy(() => import('@/pages/Render'))
 
-export const routes =  [
+const CombinatoryOverview = lazy(() => import('@/pages/combinatoryManager/Overview'))
+const CombinatoryCashflow = lazy(() => import('@/pages/combinatoryManager/Cashflow'))
+const CombinatoryPositioning = lazy(() => import('@/pages/combinatoryManager/Positioning'))
+
+export const routes: RouteProps[] =  [
   {
-    key: 'lineDemo',
     path: '/echarts/line',
-    label: 'ECharts示例',
     element: <EChartsDemo />
   },
   {
-    key: 'render',
     path: '/render/:module/:page',
-    label: '测试页面',
     element: <Render />
+  },
+  {
+    path: '/combinatory/overview',
+    element: <CombinatoryOverview />
+  },
+  {
+    path: '/combinatory/overview/single',
+    element: <CombinatoryOverview type={'single'} />
+  },
+  {
+    path: '/combinatory/cashflow',
+    element: <CombinatoryCashflow />
+  },
+  {
+    path: '/combinatory/positioning',
+    element: <CombinatoryPositioning />
   }
 ]

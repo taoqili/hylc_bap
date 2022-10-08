@@ -1,18 +1,25 @@
 import React, { useCallback, useState } from 'react'
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate, useLocation } from "react-router-dom"
 import { isQiankun, menus, rootPath } from "@/config"
+import type { MenuProps } from '@/config'
 import { Layout, Menu } from "antd"
 import './index.less'
 
 const {Sider, Content} = Layout
 
-const realMenus = menus.map(item => {
+const realMenus = menus.map((item:MenuProps) => {
   item.path = `${rootPath}${item.path}`.replace('//', '/')
   return item
 })
 
+const getMenuKey = (menus: MenuProps[], path: string) => {
+  const ret = menus.filter(item => item.path === path)
+  return ret && ret.length ? ret[0].key : menus[0].key
+}
+
 export default () => {
-  const defaultMenu = menus[0].key
+  const {pathname} = useLocation()
+  const defaultMenu = getMenuKey(menus, pathname)
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
 

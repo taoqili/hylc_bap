@@ -25,7 +25,11 @@ export default (props: Record<any, any>) => {
           {
             routes.map((item) => {
               const { path, element, ...rest } = item || {}
-
+              if (!path || !element) {
+                return (
+                  <Route {...rest} />
+                )
+              }
               return (
                 <Route
                   {...rest}

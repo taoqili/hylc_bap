@@ -1,4 +1,11 @@
-export const menus = [
+
+export interface MenuProps {
+  key: string;
+  path: string;
+  label: string;
+}
+
+export const menus: MenuProps[] = [
   {
     key: 'home',
     path: '/',
@@ -10,18 +17,23 @@ export const menus = [
     label: 'ECharts示例',
   },
   {
-    key: 'test1',
-    path: '/render/bap/test1',
-    label: '测试页1'
+    key: 'combinatoryOverview',
+    path: '/combinatory/overview',
+    label: '组合总揽多产品',
   },
   {
-    key: 'test2',
-    path: '/render/bap/test2',
-    label: '测试页2',
+    key: 'combinatoryOverviewSingle',
+    path: '/combinatory/overview/single',
+    label: '组合总揽单产品',
   },
   {
-    key: 'test3',
-    path: '/render/bap/test3',
-    label: '测试页3',
+    key: 'combinatoryCashflow',
+    path: '/combinatory/cashflow',
+    label: '现金流分析',
   },
+  {
+    key: 'combinatoryPositioning',
+    path: '/combinatory/positioning',
+    label: '持仓分析',
+  }
 ]
