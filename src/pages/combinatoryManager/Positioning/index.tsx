@@ -3,7 +3,7 @@ import { Col, Row } from "antd"
 import { PicCenterOutlined } from '@ant-design/icons'
 import IndicatorCard from '@/components/IndicatorCard'
 import HoldingCard from "./HoldingCard";
-import DemoChart from '@/components/DemoChart'
+import AssetRatioChart from './AssetRatioChart'
 
 import './index.less'
 
@@ -28,7 +28,17 @@ export default () => {
             //   {title: '比上年', value: '-2.5', unit: '%'}
             // ]}
           >
-            <DemoChart />
+            <AssetRatioChart data={[
+              [
+                {name: '债券', value: 5123.6},
+                {name: '股票', value: 1123},
+                {name: '基金', value: 123.8},
+                {name: '现金', value: 12313.5},
+                {name: '非标', value: 2323.5},
+                {name: '逆回购', value: 1233.8},
+                {name: '其他', value: 2123.8}
+              ]
+            ]} />
           </IndicatorCard>
         </Col>
         <Col span={4}>
