@@ -1,10 +1,9 @@
-import React, { useCallback, useMemo, useState } from "react"
-import { Table } from 'antd'
+import React, { useCallback, useState } from "react"
 import LcCard from '@/components/LcCard'
 import Charts from '@/components/Charts'
 import LcTable from '@/components/LcTable'
 import ActionGroup, { ActionProps } from '@/components/ActionGroup'
-import { formatMoney, pickGroups, formatChartSource } from "@/utils"
+import { formatChartSource, formatMoney, pickGroups } from "@/utils"
 import './index.less'
 
 interface ColumnProps {
@@ -24,6 +23,7 @@ interface BondHoldingProps {
   actions?: ActionProps[];
   dataSource: Record<string, any>[];
   unit?: string;
+  dimensions: [string, string];
   echartsConfig?: EChartsConfigProps;
 }
 
@@ -35,24 +35,26 @@ export default (props: BondHoldingProps) => {
     unit,
     columns = [],
     actions = [],
+    dimensions,
     echartsConfig = {},
   } = props
-
   const {barColors = ['#4FFFF5', '#2ECCFE']} = echartsConfig
+  const [curAction, setCurAction] = useState(defaultAction)
 
-  const groupNames = useMemo(() => {
-    return actions.reduce((prev: string[], cur: ActionProps): any => {
+  const getCurDataSource = (
+    dataSource: Record<string, any> [],
+    actions: ActionProps[],
+    dataIndex: string = 'Index_Cd'
+  ) => {
+    const groupNames = actions.reduce((prev: string[], cur: ActionProps): any => {
       prev.push(cur.value)
       return prev
     }, [])
-  }, [actions])
+    const groups = pickGroups(dataSource, groupNames, dataIndex)
+    return groups[curAction || groupNames[0]]
+  }
 
-  const groups = useMemo(() => {
-    return pickGroups(dataSource, groupNames, 'Index_Cd')
-  }, [dataSource])
-  const [curAction, setCurAction] = useState(defaultAction || groupNames[0])
-  const curDataSource = groups[curAction]
-  const dimensions = ['Asset_Class', 'Asset_Bal']
+  const curDataSource = !actions.length ? dataSource : getCurDataSource(dataSource, actions)
   const curChartSource = formatChartSource(curDataSource, dimensions)
 
   // 图表配置
@@ -166,7 +168,7 @@ export default (props: BondHoldingProps) => {
             <LcTable
               columns={columns}
               dataSource={curDataSource}
-              scroll={{ y: 268 }}
+              scroll={{y: 268}}
             />
           </div>
           <div className={'chart'}>

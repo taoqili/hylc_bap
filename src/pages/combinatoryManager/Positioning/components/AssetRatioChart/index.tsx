@@ -31,6 +31,7 @@ export default (props: AssetRatioProps) => {
         }
       }
     },
+    color:['#51CAFD', '#71D1E6', '#37AFFC','#4493FC','#4c78fb','#4352FB','#9D4CFD'],
     series: data.map( (item) => {
       return {
         type: 'pie',

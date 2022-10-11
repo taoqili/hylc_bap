@@ -7,12 +7,15 @@ export const formatMoney = (value: string|number = 0, noDecimals?: boolean) => {
 
 export const pickGroups = (data: Record<string, any>[], groupNames: string[], dataIndex: string): any => {
   const groups: Record<string, any> = {}
+  if (!groupNames.length) {
+    return groups
+  }
   groupNames.forEach(name => {
     groups[name] = []
   })
   data.forEach(item => {
     const key = item[dataIndex]
-    groups[key].push(item)
+    groups[key] && groups[key].push(item)
   })
   return groups
 }
