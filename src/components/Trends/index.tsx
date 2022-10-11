@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatMoney } from "@/utils/formatter";
+import { formatMoney } from "@/utils";
 import './index.less'
 
 export interface TrendProps {

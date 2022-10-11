@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { Card, CardProps } from "antd"
 import Trends, { TrendProps } from "@/components/Trends"
 import './index.less'
-import { formatMoney } from "@/utils/formatter"
+import { formatMoney } from "@/utils"
 
 interface IndicatorCardProps extends CardProps {
   value: string|number;

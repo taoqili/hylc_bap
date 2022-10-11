@@ -2,10 +2,220 @@ import React, { useEffect } from 'react'
 import { Col, Row } from "antd"
 import { PicCenterOutlined } from '@ant-design/icons'
 import IndicatorCard from '@/components/IndicatorCard'
-import HoldingCard from "./HoldingCard";
-import AssetRatioChart from './AssetRatioChart'
+import HoldingCard from "./components/HoldingCard";
+import AssetRatioChart from './components/AssetRatioChart'
 
 import './index.less'
+
+const data = [
+  {
+    Asset_Class: '分类名称1',
+    Asset_Bal: '41123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },
+  {
+    Asset_Class: '分类名称11',
+    Asset_Bal: '213123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },
+  {
+    Asset_Class: '分类名称111',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },
+  {
+    Asset_Class: '分类称111',
+    Asset_Bal: '423123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },{
+    Asset_Class: '分类名称1111',
+    Asset_Bal: '411223',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },{
+    Asset_Class: '分类名称2111',
+    Asset_Bal: '45123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },
+
+  {
+    Asset_Class: '分类名称2',
+    Asset_Bal: '4112123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rura_Spread'
+  },
+  {
+    Asset_Class: '分类名称3',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rating_Spread'
+  },
+  {
+    Asset_Class: '分类名称4',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Rura_Spread'
+  },
+  {
+    Asset_Class: '分类名称5',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Remain_Term_Spread'
+  },
+  {
+    Asset_Class: '分类名称6',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名称7',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名称71',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名称711',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类11',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类1111',
+    Asset_Bal: '41123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名31',
+    Asset_Bal: '4112312',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名33',
+    Asset_Bal: '413123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  },
+  {
+    Asset_Class: '分类名34',
+    Asset_Bal: '4123123',
+    Bal_Pct: '30.9%',
+    Mature_Reve_Rate: '5.6%',
+    Rura: '123',
+    Index_Cd: 'Industry_Spread'
+  }
+]
+
+const bondColumns = [
+  {
+    key: 'Asset_Class',
+    title: '分类名称',
+    dataIndex: 'Asset_Class'
+  },
+  {
+    key: 'Asset_Bal',
+    title: '资产余额',
+    dataIndex: 'Asset_Bal'
+  },
+  {
+    key: 'Bal_Pct',
+    title: '余额占比',
+    dataIndex: 'Bal_Pct'
+  },
+  {
+    key: 'Mature_Reve_Rate',
+    title: '到期收益率',
+    dataIndex: 'Mature_Reve_Rate'
+  },
+  {
+    key: 'Rura',
+    title: '久期',
+    dataIndex: 'Rura'
+  }
+]
+
+const stockColumns = [
+  {
+    key: 'Class',
+    title: '分类',
+    dataIndex: 'Class'
+  },
+  {
+    key: 'MakePos_Cost',
+    title: '持仓成本',
+    dataIndex: 'MakePos_Cost'
+  },
+  {
+    key: 'MakePos_MarketVal',
+    title: '持仓市值',
+    dataIndex: 'MakePos_MarketVal'
+  },
+  {
+    key: 'floating_amt',
+    title: '浮盈浮亏',
+    dataIndex: 'floating_amt'
+  },
+  {
+    key: 'Accum_Reve',
+    title: '累计收益',
+    dataIndex: 'Accum_Reve'
+  }
+]
 
 export default () => {
   useEffect(() => {
@@ -65,35 +275,40 @@ export default () => {
         <Col span={24}>
           <HoldingCard
             title={'债券持仓分析'}
-            columns={[]}
-            dataSource={[]}
-            unit={'万元'}
-            defaultAction={'pingji'}
+            columns={bondColumns}
+            dataSource={data}
+            unit={'亿元'}
+            defaultAction={'Rating_Spread'}
             actions={[
               {
                 label: '评级分布',
-                value: 'pingji'
+                value: 'Rating_Spread'
               },
               {
                 label: '久期分布',
-                value: 'jiuqi'
+                value: 'Rura_Spread'
               },
               {
                 label: '剩余期限分布',
-                value: 'shengyu'
+                value: 'Remain_Term_Spread'
               },
               {
                 label: '行业分布',
-                value: 'hangye'
+                value: 'Industry_Spread'
               }
             ]}
-            onActionChange={({target}) => {
-              debugger
-            }}
           />
         </Col>
         <Col span={24}>
-          <HoldingCard title={'股票持仓分析'} columns={[]} dataSource={[]} unit={'万元'}/>
+          <HoldingCard
+            title={'股票持仓分析'}
+            columns={stockColumns}
+            dataSource={[]}
+            unit={'万元'}
+            echartsConfig={{
+              barColors: ['#69B6FB', '#6691FD']
+            }}
+          />
         </Col>
         <Col span={24}>
           <HoldingCard
@@ -101,14 +316,14 @@ export default () => {
             columns={[]}
             dataSource={[]}
             defaultAction={'rongzi'}
+            echartsConfig={{
+              barColors: ['#87E4ED', '#C0E978']
+            }}
             actions={[
               {label: '行业', value: 'hangye'},
               {label: '融资区域', value: 'rongzi'},
               {label: '担保方式', value: 'danbao'}
             ]}
-            onActionChange={() => {
-
-            }}
           />
         </Col>
 
