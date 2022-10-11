@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from "antd";
-import Card from "@/components/Card";
+import LcCard from "@/components/LcCard";
 import './index.less'
 
 export default () => {
@@ -10,9 +10,9 @@ export default () => {
         筛选条
       </div>
       <Row gutter={[16, 16]}>
-        <Col span={6}><Card>总流入和总流出</Card></Col>
-        <Col span={18}><Card>现金流分布</Card></Col>
-        <Col span={24}><Card>现金流分析表</Card></Col>
+        <Col span={6}><LcCard>总流入和总流出</LcCard></Col>
+        <Col span={18}><LcCard>现金流分布</LcCard></Col>
+        <Col span={24}><LcCard>现金流分析表</LcCard></Col>
       </Row>
     </div>
   )

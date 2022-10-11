@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo, useState } from "react"
 import { Table } from 'antd'
-import Card from '@/components/Card'
+import LcCard from '@/components/LcCard'
 import Charts from '@/components/Charts'
+import LcTable from '@/components/LcTable'
 import ActionGroup, { ActionProps } from '@/components/ActionGroup'
 import { formatMoney, pickGroups, formatChartSource } from "@/utils"
 import './index.less'
@@ -147,7 +148,7 @@ export default (props: BondHoldingProps) => {
 
   return (
     <div className={'holding-card-wrapper'}>
-      <Card
+      <LcCard
         title={title}
         extra={
           <div className={'card-extra'}>
@@ -162,23 +163,17 @@ export default (props: BondHoldingProps) => {
       >
         <div className={'card-content'}>
           <div className={'table'}>
-            <Table
+            <LcTable
               columns={columns}
               dataSource={curDataSource}
-              pagination={false}
-              size={'small'}
-              bordered={false}
               scroll={{ y: 238 }}
-              rowClassName={(record, index) => {
-                return index % 2 === 0 ? 'odd-row' : 'even-row'
-              }}
             />
           </div>
           <div className={'chart'}>
             <Charts option={option}/>
           </div>
         </div>
-      </Card>
+      </LcCard>
     </div>
   )
 }

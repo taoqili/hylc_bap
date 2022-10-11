@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'antd'
-import Card from '@/components/Card'
+import LcCard from '@/components/LcCard'
 import './index.less'
 
 interface CombinatoryOverviewProps {
@@ -16,40 +16,40 @@ export default (props: CombinatoryOverviewProps) => {
           type === 'multiple'
             ? <>
               <Col span={6}>
-                <Card>
+                <LcCard>
                   dsfasdf
-                </Card>
+                </LcCard>
               </Col>
-              <Col span={6}><Card>产品数量</Card></Col>
-              <Col span={6}><Card>产品正回购</Card></Col>
-              <Col span={6}><Card>产品可用信息</Card></Col>
+              <Col span={6}><LcCard>产品数量</LcCard></Col>
+              <Col span={6}><LcCard>产品正回购</LcCard></Col>
+              <Col span={6}><LcCard>产品可用信息</LcCard></Col>
             </> : null
         }
         {
           type === 'single'
             ? <>
-              <Col span={5}><Card>产品总规模</Card></Col>
-              <Col span={5}><Card>产品正回购</Card></Col>
-              <Col span={5}><Card>产品可用信息</Card></Col>
-              <Col span={3}><Card>最大回撤</Card></Col>
-              <Col span={3}><Card>波动率</Card></Col>
-              <Col span={3}><Card>夏普比</Card></Col>
+              <Col span={5}><LcCard>产品总规模</LcCard></Col>
+              <Col span={5}><LcCard>产品正回购</LcCard></Col>
+              <Col span={5}><LcCard>产品可用信息</LcCard></Col>
+              <Col span={3}><LcCard>最大回撤</LcCard></Col>
+              <Col span={3}><LcCard>波动率</LcCard></Col>
+              <Col span={3}><LcCard>夏普比</LcCard></Col>
             </> : null
         }
 
-        <Col span={12}><Card>产品净资产走势</Card></Col>
-        <Col span={12}><Card>杠杆时序分布</Card></Col>
+        <Col span={12}><LcCard>产品净资产走势</LcCard></Col>
+        <Col span={12}><LcCard>杠杆时序分布</LcCard></Col>
 
-        {type === 'single' ? <Col span={12}><Card>产品净值走势</Card></Col> : null}
-        {type === 'single' ? <Col span={12}><Card>产品年化收益走势</Card></Col> : null}
+        {type === 'single' ? <Col span={12}><LcCard>产品净值走势</LcCard></Col> : null}
+        {type === 'single' ? <Col span={12}><LcCard>产品年化收益走势</LcCard></Col> : null}
 
-        <Col span={12}><Card>投资端分类统计表</Card></Col>
-        <Col span={12}><Card>投资端分布情况</Card></Col>
+        <Col span={12}><LcCard>投资端分类统计表</LcCard></Col>
+        <Col span={12}><LcCard>投资端分布情况</LcCard></Col>
 
-        <Col span={24}><Card>历史资产配置</Card></Col>
+        <Col span={24}><LcCard>历史资产配置</LcCard></Col>
 
-        <Col span={12}><Card>前十投资者分布</Card></Col>
-        <Col span={12}><Card>客户分布情况</Card></Col>
+        <Col span={12}><LcCard>前十投资者分布</LcCard></Col>
+        <Col span={12}><LcCard>客户分布情况</LcCard></Col>
 
       </Row>
     </div>
