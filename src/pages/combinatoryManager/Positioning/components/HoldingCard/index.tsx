@@ -67,7 +67,7 @@ export default (props: BondHoldingProps) => {
       left: 88,
       right: 70,
       top: 10,
-      bottom: 32
+      bottom: 20
     },
     xAxis: {
       max: 'dataMax',
@@ -166,7 +166,7 @@ export default (props: BondHoldingProps) => {
             <LcTable
               columns={columns}
               dataSource={curDataSource}
-              scroll={{ y: 238 }}
+              scroll={{ y: 268 }}
             />
           </div>
           <div className={'chart'}>
