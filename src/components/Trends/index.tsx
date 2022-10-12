@@ -21,7 +21,6 @@ const downImgUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAA
 export default (props: TrendsProps) => {
   const defaultFormatter = (value: any) => value
   const { data = [], align = 'right', formatter = defaultFormatter } = props
-  debugger
   return (
     <div className={'lcp-bap-trends'}>
       {

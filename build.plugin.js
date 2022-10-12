@@ -30,12 +30,29 @@ module.exports = ({onGetWebpackConfig, context}) => {
           'process.env': JSON.stringify(process.env)
         }
       ]);
-    // config.devServer.proxy({
-    //   '/api': {
-    //     target: 'http://dev.xuelei.com',
-    //     secure: false,
-    //     changeOrigin: true
-    //   },
-    // })
+    config.devServer.proxy({
+      '/statics': {
+        target: '/',
+        secure: false,
+        pathRewrite: {
+          '^/api': ''
+        },
+        cookiePathRewrite: {
+          '*': '/'
+        },
+        changeOrigin: true
+      },
+      '/api': {
+        target: 'http://158.1.3.146:8065',
+        secure: false,
+        pathRewrite: {
+          '^/api': ''
+        },
+        cookiePathRewrite: {
+          '*': '/'
+        },
+        changeOrigin: true
+      },
+    })
   });
 };

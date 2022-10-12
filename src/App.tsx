@@ -27,11 +27,12 @@ export default (props: Record<any, any>) => {
               const { path, element, ...rest } = item || {}
               if (!path || !element) {
                 return (
-                  <Route {...rest} />
+                  <Route key={path} {...rest} />
                 )
               }
               return (
                 <Route
+                  key={path}
                   {...rest}
                   path={path.replace(/^\//, '')}
                   element={
