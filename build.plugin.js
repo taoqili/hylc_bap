@@ -2,6 +2,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const PUBLIC_URL = process.env.PUBLIC_URL || ''
+
 module.exports = ({onGetWebpackConfig, context}) => {
   onGetWebpackConfig((config) => {
     config.resolve.plugin('tsconfigpaths').use(TsconfigPathsPlugin, [{
@@ -20,6 +22,7 @@ module.exports = ({onGetWebpackConfig, context}) => {
           minify: false,
           template: require.resolve('./public/index.html'),
           filename: `index.html`,
+          PUBLIC_URL
         },
       ]);
 
