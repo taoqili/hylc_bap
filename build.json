@@ -17,9 +17,9 @@
   "library": "HYLC_BAP",
   "libraryTarget": "umd",
   "externals": {
-    "react1": "var window.React",
-    "react-dom1": "var window.ReactDOM",
-    "echarts1": "var window.echarts"
+    "react": "var window.React",
+    "react-dom": "var window.ReactDOM",
+    "echarts": "var window.echarts"
   },
   "plugins": [
     [
