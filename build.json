@@ -9,6 +9,7 @@
   "alias": {
     "@": "./src"
   },
+  "devPublicPath": "/",
   "publicPath": "/",
   "sourceMap": true,
   "hash": "contenthash",
