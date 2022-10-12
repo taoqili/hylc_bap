@@ -1,5 +1,5 @@
 import axios from "axios"
-import mockToken from "@/utils/mockToken"
+import mockToken from "@/config/mockToken"
 
 axios.defaults.baseURL = '/api'
 axios.defaults.withCredentials = true
