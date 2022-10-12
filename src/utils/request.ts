@@ -1,4 +1,5 @@
 import axios from "axios"
+import mockToken from "@/utils/mockToken"
 
 axios.defaults.baseURL = '/api'
 axios.defaults.withCredentials = true
@@ -11,11 +12,11 @@ axios.interceptors.request.use(
     config.headers['db-Type'] = 'subzgjs'
     config.headers['Content-Type'] = 'application/json'
 
-    const token = sessionStorage.getItem('token')
+    const token = sessionStorage.getItem('token') || mockToken
     if (token) {
       config.headers.token = token
     } else {
-      Promise.reject({message: 'token失效', code: -1})
+      Promise.reject({message: '用户尚未登录', code: -1})
     }
   },
   err => {
