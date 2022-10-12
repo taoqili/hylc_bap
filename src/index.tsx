@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
 import { isQiankun } from "@/config"
 import App from './App'
+import './global.less'
 
 const render = (props: Record<any, any> = {}) => {
   const {container} = props

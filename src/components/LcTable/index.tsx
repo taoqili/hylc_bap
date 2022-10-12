@@ -8,7 +8,7 @@ export default (props: TableProps<any>) => {
     ...rest,
     className: 'lc-table',
     pagination: false,
-    size: 'small',
+    // size: 'normal',
     bordered: false,
     columns,
     rowClassName: (record: Record<string, any>, index: number) => {
