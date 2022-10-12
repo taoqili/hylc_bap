@@ -1,0 +1,54 @@
+.lc-bap-indicator-card {
+  .ant-card-body {
+    padding: 16px;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        display: flex;
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #5D6265;
+        line-height: 22px;
+        .icon {
+          width: 26px;
+          text-align: center;
+          margin-right: 4px;
+          > img {
+            position: relative;
+            top: -1px;
+          }
+        }
+      }
+      .value {
+        font-size: 34px;
+        font-family: "PingFang SC-Light", Helvetica, PingFangSC-Medium, PingFang SC;
+        color: #03111A;
+        word-break: keep-all;
+        overflow: hidden;
+        margin-top: 14px;
+        line-height: 46px;
+        height: 46px;
+        .unit {
+          font-size: 12px;
+          margin-left: 2px;
+          color: #04111a
+        }
+      }
+    }
+    .extra {
+      align-self: baseline;
+      margin-left: 20px;
+      flex: 1;
+    }
+  }
+}

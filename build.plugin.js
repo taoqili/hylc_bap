@@ -2,6 +2,8 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+require('dotenv').config()
+
 module.exports = ({onGetWebpackConfig, context}) => {
   onGetWebpackConfig((config) => {
     config.resolve.plugin('tsconfigpaths').use(TsconfigPathsPlugin, [{
@@ -20,6 +22,7 @@ module.exports = ({onGetWebpackConfig, context}) => {
           minify: false,
           template: require.resolve('./public/index.html'),
           filename: `index.html`,
+          PUBLIC_URL: process.env.PUBLIC_URL || ''
         },
       ]);
 
@@ -30,12 +33,18 @@ module.exports = ({onGetWebpackConfig, context}) => {
           'process.env': JSON.stringify(process.env)
         }
       ]);
-    // config.devServer.proxy({
-    //   '/api': {
-    //     target: 'http://dev.xuelei.com',
-    //     secure: false,
-    //     changeOrigin: true
-    //   },
-    // })
+    config.devServer.proxy({
+      '/api': {
+        target: 'http://158.1.3.146:8065',
+        secure: false,
+        pathRewrite: {
+          '^/api': ''
+        },
+        cookiePathRewrite: {
+          '*': '/'
+        },
+        changeOrigin: true
+      },
+    })
   });
 };
