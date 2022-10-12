@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react"
 import LcCard from '@/components/LcCard'
 import Charts from '@/components/Charts'
 import LcTable from '@/components/LcTable'
-import ActionGroup, { ActionProps } from '@/components/ActionGroup'
+import ButtonGroup, { ButtonProps } from '@/components/ButtonGroup'
 import { formatChartSource, formatMoney, pickGroups } from "@/utils"
 import './index.less'
 
@@ -20,7 +20,7 @@ interface BondHoldingProps {
   title: string;
   columns: ColumnProps[];
   defaultAction?: string;
-  actions?: ActionProps[];
+  actions?: ButtonProps[];
   dataSource: Record<string, any>[];
   unit?: string;
   dimensions: [string, string];
@@ -43,10 +43,10 @@ export default (props: BondHoldingProps) => {
 
   const getCurDataSource = (
     dataSource: Record<string, any> [],
-    actions: ActionProps[],
+    actions: ButtonProps[],
     dataIndex: string = 'Index_Cd'
   ) => {
-    const groupNames = actions.reduce((prev: string[], cur: ActionProps): any => {
+    const groupNames = actions.reduce((prev: string[], cur: ButtonProps): any => {
       prev.push(cur.value)
       return prev
     }, [])
@@ -155,9 +155,9 @@ export default (props: BondHoldingProps) => {
         extra={
           <div className={'card-extra'}>
             {unit ? <div style={{marginRight: 16}}>单位：{unit}</div> : null}
-            <ActionGroup
-              defaultAction={defaultAction}
-              actions={actions}
+            <ButtonGroup
+              defaultActivated={defaultAction}
+              items={actions}
               onChange={onActionChange}
             />
           </div>

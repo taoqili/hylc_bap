@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Col, Row, Button, Form } from "antd";
 import LcCard from "@/components/LcCard";
 import './index.less'
 import TableCashFlow from './tableCashFlow';
 import BarCashFlow from './barCashFlow';
+import ButtonGroup from '@/components/ButtonGroup'
 import PieCashFlow from './pieCashFlow'
 // import CashBg from './images/totalCashInflow.png'
 
@@ -12,18 +13,24 @@ let barCashFlow = {
   yAxisdata: [-100, 30, -70, 40, 125, 50, 30, 70, 40, -125, 70, 40],
 }
 
-let buttonArr = ['日', '周', '月', '季度', '半年']
+let buttonArr = [
+  {label: '日', value: 'day'},
+  {label: '周', value: 'week'},
+  {label: '月', value: 'month'},
+  {label: '季度', value: 'quarter'},
+  {label: '半年', value: 'halfYear'}
+]
 let buttonIndex = 0 //默认第一个被选中
-let changeButton = (item:any,index:any) =>{
-  buttonIndex = index  //更新状态
-}
+
 
 
 
 export default () => {
+  const [defaultSelected, setDefaultSelected] = useState('day')
 
+  const changeButton = useCallback(() => {
 
-
+  }, [])
   return (
     <div className={'cashflow-wrapper'}>
       <div className={'cashflow-filter'}>
@@ -33,28 +40,28 @@ export default () => {
         </Button>
       </div>
       <Row gutter={[16, 16]}>
-        <Col span={6}>
+        <Col span={8}>
           <LcCard>
             {/* 总流入和总流出 */}
             <div className='cardWraper'>
-              <div className='btnWraper'>
-                {/* <Button ghost>日</Button>
-                <Button ghost>周</Button>
-                <Button ghost>月</Button>
-                <Button ghost >季度</Button>
-                <Button ghost >半年</Button> */}
+              {/*<div className='btnWraper'>*/}
+              {/*  /!* <Button ghost>日</Button>*/}
+              {/*  <Button ghost>周</Button>*/}
+              {/*  <Button ghost>月</Button>*/}
+              {/*  <Button ghost >季度</Button>*/}
+              {/*  <Button ghost >半年</Button> *!/*/}
 
-                {
-                  buttonArr.map((item, index) => {
-                    return ( <Button className={index === buttonIndex ? 'button_active' : ''}
-                    key={index} onClick={() => changeButton(item, index)} ghost>
-                    {item}
-                  </Button>)
+              {/*  {*/}
+              {/*    buttonArr.map((item, index) => {*/}
+              {/*      return ( <Button className={index === buttonIndex ? 'button_active' : ''}*/}
+              {/*      key={index} onClick={() => changeButton(item, index)} ghost>*/}
+              {/*      {item}*/}
+              {/*    </Button>)*/}
 
-                  })
-                }
-
-              </div>
+              {/*    })*/}
+              {/*  }*/}
+              {/*</div>*/}
+              <ButtonGroup defaultActivated={defaultSelected} items={buttonArr} onChange={changeButton}></ButtonGroup>
               <div className="cardButtom">
                 {/*  现金总流入  */}
                 <div className='cardLeft'>
@@ -83,7 +90,7 @@ export default () => {
             </div>
           </LcCard>
         </Col>
-        <Col span={18}>
+        <Col span={16}>
           <LcCard>
             {/* 现金流分布 */}
             <div className="titieWrap">
