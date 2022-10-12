@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row, Button, Form } from "antd";
-import Card from "@/components/Card";
+import LcCard from "@/components/LcCard";
 import './index.less'
 import TableCashFlow from './tableCashFlow';
 import BarCashFlow from './barCashFlow';
@@ -21,7 +21,7 @@ let changeButton = (item:any,index:any) =>{
 
 
 export default () => {
-  
+
 
 
   return (
@@ -34,7 +34,7 @@ export default () => {
       </div>
       <Row gutter={[16, 16]}>
         <Col span={6}>
-          <Card>
+          <LcCard>
             {/* 总流入和总流出 */}
             <div className='cardWraper'>
               <div className='btnWraper'>
@@ -50,7 +50,7 @@ export default () => {
                     key={index} onClick={() => changeButton(item, index)} ghost>
                     {item}
                   </Button>)
-                   
+
                   })
                 }
 
@@ -81,26 +81,26 @@ export default () => {
 
               </div>
             </div>
-          </Card>
+          </LcCard>
         </Col>
         <Col span={18}>
-          <Card>
+          <LcCard>
             {/* 现金流分布 */}
             <div className="titieWrap">
               <span className="tableTitle">现金流分布</span>
             </div>
             <BarCashFlow data={barCashFlow}></BarCashFlow>
-          </Card>
+          </LcCard>
         </Col>
         <Col span={24}>
-          <Card>
+          <LcCard>
             {/* 现金流分析表 */}
             <div className="titieWrap">
               <span className="tableTitle">产品净资产走势</span>
               <span className="monetaryUnit">单位:万元</span>
             </div>
             <TableCashFlow></TableCashFlow>
-          </Card>
+          </LcCard>
         </Col>
       </Row>
     </div>

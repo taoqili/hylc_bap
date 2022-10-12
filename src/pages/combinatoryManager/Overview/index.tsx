@@ -1,7 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'antd'
-import * as echarts from 'echarts'
-import Card from '@/components/Card'
+import LcCard from '@/components/LcCard'
 import CardWithRightIcon from './cardWithRightIcon'
 import CardWithTopIcon from './cardWithTopIcon'
 import LineProdNetAssets from './lineProdNetAssets'
@@ -152,23 +151,23 @@ export default (props: CombinatoryOverviewProps) => {
           type === 'multiple'
             ? <>
               <Col span={6}>
-                <Card>
+                <LcCard>
                   <CardWithRightIcon card={cardDimensions}></CardWithRightIcon>
-                </Card>
+                </LcCard>
               </Col>
               <Col span={6}>
-                <Card>
+                <LcCard>
                   <CardWithRightIcon card={cardQuantity}></CardWithRightIcon>
-                </Card>
+                </LcCard>
               </Col>
-              <Col span={6}><Card>
+              <Col span={6}><LcCard>
                 <CardWithRightIcon card={cardRepurchase}></CardWithRightIcon>
-              </Card>
+              </LcCard>
               </Col>
               <Col span={6}>
-                <Card>
+                <LcCard>
                   <CardWithRightIcon card={cardCashAvailable}></CardWithRightIcon>
-                </Card>
+                </LcCard>
               </Col>
             </> : null
         }
@@ -176,50 +175,50 @@ export default (props: CombinatoryOverviewProps) => {
           type === 'single'
             ? <>
               <Col span={7}>
-                <Card>
+                <LcCard>
                   {/* 产品总规模 */}
                   <CardWithRightIcon card={cardDimensions}></CardWithRightIcon>
-                </Card>
+                </LcCard>
               </Col>
-              <Col span={7}><Card>
+              <Col span={7}><LcCard>
                 <CardWithRightIcon card={cardRepurchase}></CardWithRightIcon>
-              </Card>
+              </LcCard>
               </Col>
               <Col span={7}>
-                <Card>
+                <LcCard>
                   <CardWithRightIcon card={cardCashAvailable}></CardWithRightIcon>
-                </Card>
+                </LcCard>
               </Col>
               <Col span={3}>
-                <Card>
+                <LcCard>
                   {/* 夏普比 */}
                   <CardWithTopIcon card={cardSharpe}></CardWithTopIcon>
-                </Card>
+                </LcCard>
               </Col>
             </> : null
         }
 
         <Col span={12}>
-          <Card>
+          <LcCard>
             <div className="titieWrap">
               <span className="tableTitle">产品净资产走势</span>
               <span className="monetaryUnit">单位:万元</span>
             </div>
             <LineProdNetAssets data={prodNetAssets}></LineProdNetAssets>
-          </Card>
+          </LcCard>
         </Col>
         <Col span={12}>
-          <Card>
+          <LcCard>
             <div className="titieWrap">
               <span className="tableTitle">杠杆率时序分布</span>
               <span className="monetaryUnit">单位:万元</span>
             </div>
             <BarLeverageTiming data={LeverageTiming}></BarLeverageTiming>
-          </Card>
+          </LcCard>
         </Col>
 
         {type === 'single' ? <Col span={12}>
-          <Card>
+          <LcCard>
             {/* 产品净值走势 */}
             <div className="titieWrap">
               <span className="tableTitle">产品净值走势</span>
@@ -227,10 +226,10 @@ export default (props: CombinatoryOverviewProps) => {
             </div>
 
             <LineProdNetValue data={prodNetValue}></LineProdNetValue>
-          </Card>
+          </LcCard>
         </Col> : null}
         {type === 'single' ? <Col span={12}>
-          <Card>
+          <LcCard>
             {/* 产品年化收益走势 */}
             <div className="titieWrap">
               <span className="tableTitle">产品年化收益走势</span>
@@ -238,11 +237,11 @@ export default (props: CombinatoryOverviewProps) => {
             </div>
 
             <LineProdAnnualizedYield data={prodAnnualizedYield}></LineProdAnnualizedYield>
-          </Card>
+          </LcCard>
         </Col> : null}
 
         <Col span={12}>
-          <Card>
+          <LcCard>
             <div>
               <div className="titieWrap">
                 <span className="tableTitle">投资端分类统计表</span>
@@ -250,10 +249,10 @@ export default (props: CombinatoryOverviewProps) => {
               </div>
               <TableInvest></TableInvest>
             </div>
-          </Card>
+          </LcCard>
         </Col>
         <Col span={12}>
-          <Card >
+          <LcCard >
             <div>
               <div className="titieWrap">
                 <span className="tableTitle">投资端分布情况</span>
@@ -261,20 +260,20 @@ export default (props: CombinatoryOverviewProps) => {
               </div>
               <BarInvest data={barInvest}></BarInvest>
             </div>
-          </Card>
+          </LcCard>
         </Col>
 
         <Col span={24}>
-          <Card>
+          <LcCard>
             <div className="titieWrap titleRelative">
               <span className="tableTitle titleFloat">历史资产配置</span>
               <LineHistoryAsset data={historyAsset}></LineHistoryAsset>
             </div>
-          </Card>
+          </LcCard>
         </Col>
 
         <Col span={12}>
-          <Card>
+          <LcCard>
             {/* 前十投资者分布 */}
             <div >
               <div className="titieWrap">
@@ -283,10 +282,10 @@ export default (props: CombinatoryOverviewProps) => {
               </div>
               <TableTopInvestor></TableTopInvestor>
             </div>
-          </Card>
+          </LcCard>
         </Col>
         <Col span={12}>
-          <Card>
+          <LcCard>
             <div className=" titieWrap">
               <span className="tableTitle ">客户数分布情况</span>
             </div>
@@ -324,7 +323,7 @@ export default (props: CombinatoryOverviewProps) => {
               </div>
 
             </div>
-          </Card>
+          </LcCard>
         </Col>
 
       </Row>
