@@ -1,5 +1,146 @@
 .cashflow-wrapper {
   .cashflow-filter {
       padding: 10px;
+      // 卡片标题和单位样式titieWrap
   }
+  .titieWrap {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 24px;
+
+    .tableTitle {
+        font-size: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-weight: bold;
+    }
+    .monetaryUnit {
+        font-size: 14px;
+        height: 14px;
+        float: right !important;
+        padding-right: 0px;
+    }
+}
+  // 现金总流入、出样式
+.cardWraper{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  // justify-content: center;
+  height:346px;
+.btnWraper{
+  background-color: #F2F7FB;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  display:inline-block;
+  border-radius: 16px;
+
+  // .button_active{
+  //   color: #fff;
+  //   background: -webkit-gradient(linear, 0% 20%, 20% 100%, from(#4EE4F6), to(#5098EB));
+
+  // }
+  .ant-btn{
+    border-radius: 16px;
+    color: #999999; 
+    border: 0px solid transparent;
+    box-shadow: 0 0 0 rgb(0 0 0 / 2%);
+    transition: all 0s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+// .ant-btn:first-child{
+//   color: #fff;
+//   background: -webkit-gradient(linear, 0% 20%, 20% 100%, from(#4EE4F6), to(#5098EB));
+
+// }
+.ant-btn:focus, .ant-btn:hover {
+  color: #fff;
+  background: -webkit-gradient(linear, 0% 20%, 20% 100%, from(#4EE4F6), to(#5098EB));
+}
+}
+// 底部数据
+.cardButtom{
+   height: 300px;
+   display: flex;
+   width: 100%;
+   justify-content: space-around;
+   align-items: center;
+   
+   div{
+   h3{
+     text-align: center;
+     margin-top: 16px
+   }
+    }
+    .cardLeft{
+      position: relative;
+      .cardNum{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        transform:translate(-50%,-60%);
+        white-space: nowrap;
+        span:first-child{
+          font-size: 40px;
+        }
+      }
+    }
+  }
+ 
+
+}
+
+
+
+// 设置表格样式
+/* 表格设置斑马纹 */
+.OddBgcolor{
+background-color: #FAFAFA;
+
+}
+
+/* 去除表格边框 */
+tbody tr:nth-child(n) td {
+border: 0px solid #D5D5D5;
+}
+
+/* 设置表格鼠标滑过行高亮样式 */
+.ant-table-tbody>tr:hover:not(.ant-table-expanded-row)>td {
+background-color: #f1f6fd !important;
+}
+
+/* 设置表头样式 */
+.ant-table-thead tr th {
+background: #F2F7FB;
+border: 0;
+font-size: 14px;
+
+height: 50px;
+font-weight: bold;
+}
+
+/* 设置滚动条对应表头区域样式 */
+.ant-table-fixed-header .ant-table-scroll .ant-table-header {
+overflow: hidden !important;
+margin-bottom: 0 !important;
+padding-bottom: 0;
+// padding-right: 0;
+}
+
+/* 设置表格滚动条样式 */
+::-webkit-scrollbar {
+height: 8px;
+width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+border-radius: 4px;
+background: #C7CCD2;
+}
+
+::-webkit-scrollbar-track {
+border-radius: 4px;
+background: #EDEDED;
+}
+
 }

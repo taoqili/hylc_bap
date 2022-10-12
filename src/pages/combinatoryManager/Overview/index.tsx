@@ -175,33 +175,19 @@ export default (props: CombinatoryOverviewProps) => {
         {
           type === 'single'
             ? <>
-              <Col span={5}>
+              <Col span={7}>
                 <Card>
                   {/* 产品总规模 */}
                   <CardWithRightIcon card={cardDimensions}></CardWithRightIcon>
                 </Card>
               </Col>
-              <Col span={5}>
-                <Card>
-                  <CardWithRightIcon card={cardQuantity}></CardWithRightIcon>
-                </Card>
+              <Col span={7}><Card>
+                <CardWithRightIcon card={cardRepurchase}></CardWithRightIcon>
+              </Card>
               </Col>
-              <Col span={5}>
+              <Col span={7}>
                 <Card>
-                  {/* 产品可用现金 */}
                   <CardWithRightIcon card={cardCashAvailable}></CardWithRightIcon>
-                </Card>
-              </Col>
-              <Col span={3}>
-                <Card>
-                  {/* 最大回撤 */}
-                  <CardWithTopIcon card={cardMaxRollback}></CardWithTopIcon>
-                </Card>
-              </Col>
-              <Col span={3}>
-                <Card>
-                  {/* 波动率 */}
-                  <CardWithTopIcon card={cardVolatility}></CardWithTopIcon>
                 </Card>
               </Col>
               <Col span={3}>
@@ -303,7 +289,6 @@ export default (props: CombinatoryOverviewProps) => {
           <Card>
             <div className=" titieWrap">
               <span className="tableTitle ">客户数分布情况</span>
-
             </div>
             <div className="customerWrap">
               {/*  个人客户总数  */}
