@@ -154,8 +154,9 @@ export default () => {
         <Col span={14}>
           <IndicatorCard
             title={'总资产规模'}
-            value={'232326523'}
+            value={formatMoney('23211326')}
             unit={'亿'}
+            trendsDirection={'v'}
             titleIcon={assetImg}
             trends={[
               {title: '余额', value: '300025', unit: '亿', formatter: (value) => formatMoney(value)},
@@ -167,7 +168,7 @@ export default () => {
               [
                 {name: '债券', value: 5123.6},
                 {name: '股票', value: 1123},
-                {name: '基金', value: 123.8},
+                {name: '基金', value: 1231.8},
                 {name: '现金', value: 12313.5},
                 {name: '非标', value: 2323.5},
                 {name: '逆回购', value: 1233.8},

@@ -12,6 +12,7 @@ export interface TrendProps {
 export interface TrendsProps {
   data: TrendProps[];
   align?: 'left' | 'right' | 'center';
+  direction?: 'h' | 'v';
   formatter?: (value: any) => void;
 }
 
@@ -20,22 +21,38 @@ const downImgUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAwCAYAAA
 
 export default (props: TrendsProps) => {
   const defaultFormatter = (value: any) => value
-  const { data = [], align = 'right', formatter = defaultFormatter } = props
+  const { data = [], align = 'right', direction = 'h', formatter = defaultFormatter } = props
   return (
     <div className={'lcp-bap-trends'}>
       {
         data.map(item => {
           const {value, title, unit = '', formatter: format} = item
           const strVal = String(value)
-          const color = strVal.indexOf('-') === 0 ? 'green' : strVal === '0' || !strVal ? 'gray' : 'red'
+          const color = strVal.indexOf('-') === 0 ? '#2AC97D' : strVal === '0' || !strVal ? 'gray' : '#EE4747'
           const img = strVal.indexOf('-') === 0 ? downImgUrl : strVal === '0' || !strVal ? '' : upImgUrl
+          const isV = direction === 'v'
           return (
-            <div className={'lcp-bap-trend'} style={{justifyContent: align}}>
-              <div>{title}</div>
-              <div style={{color}}>
-                {(format ? format(value) : formatter(value)) + unit}
+            <div
+              className={'lcp-bap-trend'}
+              style={{
+                justifyContent:  isV ? 'center' : align,
+                flexDirection: isV ? 'column-reverse' : 'row'
+              }}
+            >
+              <div
+                className={'trend-title'}
+                style={{
+                  marginRight: isV ? 0: 12
+                }}
+              >
+                {title}
               </div>
-              {img ? <img width={6} height={10} style={{marginLeft: 2}} src={img} alt=""/> : null}
+              <div className={'trend-value'}>
+                <div style={{color}}>
+                  {(format ? format(value) : formatter(value)) + unit}
+                </div>
+                {img ? <img width={6} height={10} style={{marginLeft: 2}} src={img} alt=""/> : null}
+              </div>
             </div>
           )
         })

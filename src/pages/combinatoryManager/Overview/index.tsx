@@ -1,8 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'antd'
 import LcCard from '@/components/LcCard'
-import CardWithRightIcon from './cardWithRightIcon'
-import CardWithTopIcon from './cardWithTopIcon'
 import LineProdNetAssets from './lineProdNetAssets'
 import LineProdNetValue from './lineProdNetValue'
 import LineProdAnnualizedYield from './lineProdAnnualizedYield'
@@ -13,6 +11,8 @@ import TableTopInvestor from './tableTopInvestor'
 import BarInvest from './barInvest'
 import PieCustomer from './pieCustomer'
 import './index.less'
+import { getAssets } from "@/utils";
+import IndicatorCard from "@/components/IndicatorCard";
 
 interface CombinatoryOverviewProps {
   type?: 'multiple' | 'single',
@@ -23,51 +23,58 @@ export default (props: CombinatoryOverviewProps) => {
   // 产品总规模等4个卡片数据
   let cardDimensions = {
     name: '产品总规模',
+    unit: '亿',
     amt: '27.26',
-    com_lastd: '0',
+    com_lastd: '1',
     com_lastm: '-0.32',
     com_lasty: '4.32',
-    img: require("./images/scale@1x.png")
+    img: getAssets('img/combinatory/scale@2x.png')
   }
   let cardQuantity = {
     name: '产品数量',
     amt: '2700',
-    com_lastd: '0',
+    unit: '个',
+    com_lastd: '-2',
     com_lastm: '-0.32',
     com_lasty: '4.32',
-    img: require("./images/num@1x.png")
+    img: getAssets('img/combinatory/num@2x.png')
   }
   let cardRepurchase = {
     name: '产品正回购',
     amt: '27.26',
+    unit: '亿',
     com_lastd: '0',
     com_lastm: '-0.32',
     com_lasty: '4.32',
-    img: require("./images/buyback@1x.png")
+    img: getAssets('img/combinatory/buyback@2x.png')
   }
   let cardCashAvailable = {
     name: '产品可用现金',
     amt: '27.26',
+    unit: '亿',
     com_lastd: '0',
     com_lastm: '-0.32',
     com_lasty: '4.32',
-    img: require("./images/cash@1x.png")
+    img: getAssets('img/combinatory/cash@2x.png')
   }
   // 最大回撤等3个卡片数据
   let cardMaxRollback = {
     name: '最大回撤',
     amt: '27.26',
-    img: require("./images/zdhc@1x.png")
+    unit: '亿',
+    img: getAssets('img/combinatory/zdhc@2x.png')
   }
   let cardVolatility = {
     name: '波动率',
-    amt: '27.26',
-    img: require("./images/bdl@1x.png")
+    amt: '-7.26',
+    unit: '%',
+    img: getAssets('img/combinatory/bdl@2x.png')
   }
   let cardSharpe = {
     name: '夏普比',
-    amt: '27.26',
-    img: require("./images/xpb@1x.png")
+    amt: '5.3',
+    unit: '',
+    img: getAssets('img/combinatory/xpb@2x.png')
   }
   // 产品净资产折线图
   let prodNetAssets = {
@@ -150,51 +157,81 @@ export default (props: CombinatoryOverviewProps) => {
         {
           type === 'multiple'
             ? <>
-              <Col span={6}>
-                <LcCard>
-                  <CardWithRightIcon card={cardDimensions}></CardWithRightIcon>
-                </LcCard>
-              </Col>
-              <Col span={6}>
-                <LcCard>
-                  <CardWithRightIcon card={cardQuantity}></CardWithRightIcon>
-                </LcCard>
-              </Col>
-              <Col span={6}><LcCard>
-                <CardWithRightIcon card={cardRepurchase}></CardWithRightIcon>
-              </LcCard>
-              </Col>
-              <Col span={6}>
-                <LcCard>
-                  <CardWithRightIcon card={cardCashAvailable}></CardWithRightIcon>
-                </LcCard>
-              </Col>
+              {
+                [cardDimensions, cardQuantity, cardRepurchase, cardCashAvailable].map(item => {
+                  return (
+                    <Col span={6}>
+                      <IndicatorCard
+                        title={item.name}
+                        value={item.amt}
+                        unit={item.unit}
+                        trendsDirection={'v'}
+                        trends={[
+                          {title: '比上日', value: item.com_lastd, unit: item.unit},
+                          {title: '比上月', value: item.com_lastm, unit: item.unit},
+                          {title: '比上年', value: item.com_lasty, unit: item.unit}
+                        ]}
+                      >
+                        <div style={{textAlign: 'right'}}>
+                          <img width={42} src={item.img} alt=""/>
+                        </div>
+                      </IndicatorCard>
+                    </Col>
+                  )
+                })
+              }
             </> : null
         }
         {
           type === 'single'
             ? <>
-              <Col span={7}>
-                <LcCard>
-                  {/* 产品总规模 */}
-                  <CardWithRightIcon card={cardDimensions}></CardWithRightIcon>
-                </LcCard>
-              </Col>
-              <Col span={7}><LcCard>
-                <CardWithRightIcon card={cardRepurchase}></CardWithRightIcon>
-              </LcCard>
-              </Col>
-              <Col span={7}>
-                <LcCard>
-                  <CardWithRightIcon card={cardCashAvailable}></CardWithRightIcon>
-                </LcCard>
-              </Col>
-              <Col span={3}>
-                <LcCard>
-                  {/* 夏普比 */}
-                  <CardWithTopIcon card={cardSharpe}></CardWithTopIcon>
-                </LcCard>
-              </Col>
+              {
+                [cardDimensions, cardRepurchase, cardCashAvailable].map(item => {
+                  return (
+                    <Col span={5}>
+                      <IndicatorCard
+                        title={item.name}
+                        value={item.amt}
+                        unit={item.unit}
+                        trendsDirection={'v'}
+                        trends={[
+                          {title: '比上日', value: item.com_lastd, unit: item.unit},
+                          {title: '比上月', value: item.com_lastm, unit: item.unit},
+                          {title: '比上年', value: item.com_lasty, unit: item.unit}
+                        ]}
+                      >
+                        <div style={{textAlign: 'right'}}>
+                          <img width={42} src={item.img} alt=""/>
+                        </div>
+                      </IndicatorCard>
+                    </Col>
+                  )
+                })
+              }
+
+              {
+                [cardMaxRollback,cardVolatility, cardSharpe].map(item => {
+                  return (
+                    <Col span={3}>
+                      <IndicatorCard
+                        value={item.amt}
+                        style={{
+                          fontSize: 30,
+                          color: String(item.amt).indexOf('-') === 0 ? '#2AC97D': '#000',
+                          textAlign: 'center'
+                        }}
+                        unit={item.unit || ''}
+                        topExtra={
+                          <div style={{textAlign: 'center', marginBottom: 0}}>
+                            <div><img width={42} height={42} src={item.img} alt=""/></div>
+                            <div style={{marginTop:14}}>{item.name}</div>
+                          </div>
+                        }
+                      />
+                    </Col>
+                  )
+                })
+              }
             </> : null
         }
 
@@ -294,7 +331,7 @@ export default (props: CombinatoryOverviewProps) => {
               <div className="customerleft">
                 <div className="customerTop">
                   <div className="rowFlex">
-                    <img style={{ marginRight: '10px' }} src={require('./images/IndividualCustomers.png')} />
+                    <img style={{ marginRight: '10px' }} src={getAssets('img/combinatory/IndividualCustomers.png')} />
                     <span>个人客户总数</span>
                   </div>
                   <div>
@@ -311,7 +348,7 @@ export default (props: CombinatoryOverviewProps) => {
               <div className="customerleft customerright">
                 <div className="customerTop">
                   <div className="rowFlex">
-                    <img style={{ marginRight: '10px' }} src={require('./images/enterpriseCustomers.png')} />
+                    <img style={{ marginRight: '10px' }} src={getAssets("img/combinatory/enterpriseCustomers.png")} />
                     <div className="customerTitle">企业客户总数</div>
                   </div>
                   <div>

@@ -2,18 +2,21 @@ import React, { ReactElement } from 'react'
 import { Card, CardProps } from "antd"
 import Trends, { TrendProps } from "@/components/Trends"
 import './index.less'
-import { formatMoney } from "@/utils"
 
 interface IndicatorCardProps extends CardProps {
   value: string|number;
   unit?: string;
   titleIcon?: ReactElement;
+  trendsDirection?: 'v' | 'h';
   trends?: TrendProps[];
-  height?: number
+  topExtra?: ReactElement;
+  height?: number,
+  style?: Record<string, any>
 }
 
 export default (props: IndicatorCardProps) => {
-  const {title, value, unit = '亿', titleIcon, children, trends = [], height, ...rest} = props
+  const {title, value, unit = '', style = {}, trendsDirection='h', topExtra, titleIcon, children, trends = [], height, ...rest} = props
+  const { textAlign, ...restStyle } = style
   return (
     <div className={'lc-bap-indicator-card'}>
       <Card
@@ -26,7 +29,8 @@ export default (props: IndicatorCardProps) => {
           borderRadius: 6,
         }}
       >
-        <div className={'content'} style={{height}}>
+        {topExtra ? <div className={'top-extra'}>{topExtra}</div> : null}
+        <div className={'content'} style={{height, justifyContent: textAlign}}>
           <div className={'main'}>
             <div className={'title'}>
               {
@@ -36,16 +40,16 @@ export default (props: IndicatorCardProps) => {
               {title}
             </div>
             <div className={'value'} style={{marginLeft: titleIcon ? 26 : 0}}>
-              <span style={{transform: 'scaleX(.8)'}}>{unit !== '亿' ? value : formatMoney(value)}</span>
-              <span className={'unit'}>{unit || '亿'}</span>
+              <span className={'number'} style={restStyle}>{value}</span>
+              {unit ? <span className={'unit'}>{unit}</span>: null}
             </div>
           </div>
           {children ? <div className={'extra'}>{children}</div> : null}
         </div>
         {
           trends && trends.length
-            ? <div style={{marginTop: 14,padding: '14px 0', borderTop: '1px solid #E8E8E8'}}>
-              <Trends data={trends} align={'center'}/>
+            ? <div style={{marginTop: 14,padding: `${trendsDirection === 'h'? 17 : 8}px 0`, borderTop: '1px solid #E8E8E8'}}>
+              <Trends data={trends} align={'center'} direction={trendsDirection}/>
             </div> : null
         }
       </Card>
