@@ -2,7 +2,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
-const PUBLIC_URL = process.env.PUBLIC_URL || ''
+require('dotenv').config()
 
 module.exports = ({onGetWebpackConfig, context}) => {
   onGetWebpackConfig((config) => {
@@ -22,7 +22,7 @@ module.exports = ({onGetWebpackConfig, context}) => {
           minify: false,
           template: require.resolve('./public/index.html'),
           filename: `index.html`,
-          PUBLIC_URL
+          PUBLIC_URL: process.env.PUBLIC_URL || ''
         },
       ]);
 
