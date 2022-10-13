@@ -12,11 +12,6 @@ export const menus: MenuProps[] = [
     label: '首页'
   },
   {
-    key: 'lineDemo',
-    path: '/echarts/line',
-    label: 'ECharts示例',
-  },
-  {
     key: 'combinatoryOverview',
     path: '/combinatory/overview',
     label: '组合总揽多产品',
