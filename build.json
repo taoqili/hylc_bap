@@ -4,7 +4,8 @@
   },
   "vendor": false,
   "devServer": {
-    "historyApiFallback": true
+    "historyApiFallback": true,
+    "hot": false
   },
   "alias": {
     "@": "./src"
@@ -14,7 +15,7 @@
   "sourceMap": true,
   "hash": "contenthash",
   "outputDir": "dist",
-  "library": "HYLC_BAP",
+  "library": "hylc_bap",
   "libraryTarget": "umd",
   "externals": {
     "react": "var window.React",
