@@ -4,8 +4,7 @@
   },
   "vendor": false,
   "devServer": {
-    "historyApiFallback": true,
-    "hot": false
+    "historyApiFallback": true
   },
   "alias": {
     "@": "./src"

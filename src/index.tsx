@@ -1,3 +1,4 @@
+import './public-path';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
@@ -7,14 +8,14 @@ import './global.less'
 
 const render = (props: Record<any, any> = {}) => {
   const {container} = props
-  const target = document.querySelector('#app')
+  const target = container? container.querySelector('#app') : document.querySelector('#app')
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <App/>
       </BrowserRouter>
     </React.StrictMode>,
-    container || target,
+    target
   )
 }
 
