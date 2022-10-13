@@ -18,13 +18,34 @@ axios.interceptors.request.use(
     } else {
       Promise.reject({message: '用户尚未登录', code: -1})
     }
+    return config
   },
   err => {
-    Promise.reject({message: err.message || '请求异常', code: -999})
+    Promise.reject(err)
   }
 )
 
 export default {
-  get: axios.get,
-  post: axios.post
+  get: (url: string, params: Record<string, any>) => {
+    return new Promise((resolve, reject) => {
+      axios.get(url, params)
+        .then(res => {
+          resolve(res.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  post: (url: string, data: Record<string, any>) => {
+    return new Promise((resolve, reject) => {
+      axios.post(url, data)
+        .then(res => {
+          resolve(res.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
 }

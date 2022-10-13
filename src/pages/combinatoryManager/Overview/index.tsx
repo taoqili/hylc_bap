@@ -236,96 +236,51 @@ export default (props: CombinatoryOverviewProps) => {
         }
 
         <Col span={12}>
-          <LcCard>
-            <div className="titieWrap">
-              <span className="tableTitle">产品净资产走势</span>
-              <span className="monetaryUnit">单位:万元</span>
-            </div>
+          <LcCard title={'产品净资产走势'} extra={<span>单位:万元</span>}>
             <LineProdNetAssets data={prodNetAssets}></LineProdNetAssets>
           </LcCard>
         </Col>
         <Col span={12}>
-          <LcCard>
-            <div className="titieWrap">
-              <span className="tableTitle">杠杆率时序分布</span>
-              <span className="monetaryUnit">单位:万元</span>
-            </div>
+          <LcCard title={'杠杆率时序分布'} extra={<span>单位:万元</span>}>
             <BarLeverageTiming data={LeverageTiming}></BarLeverageTiming>
           </LcCard>
         </Col>
 
         {type === 'single' ? <Col span={12}>
-          <LcCard>
-            {/* 产品净值走势 */}
-            <div className="titieWrap">
-              <span className="tableTitle">产品净值走势</span>
-              <span className="monetaryUnit">单位:万元</span>
-            </div>
-
+          <LcCard title={'产品净值走势'} extra={<span>单位:万元</span>}>
             <LineProdNetValue data={prodNetValue}></LineProdNetValue>
           </LcCard>
         </Col> : null}
         {type === 'single' ? <Col span={12}>
-          <LcCard>
-            {/* 产品年化收益走势 */}
-            <div className="titieWrap">
-              <span className="tableTitle">产品年化收益走势</span>
-              <span className="monetaryUnit">单位:万元</span>
-            </div>
-
+          <LcCard title={'产品年化收益走势'} extra={<span>单位:万元</span>}>
             <LineProdAnnualizedYield data={prodAnnualizedYield}></LineProdAnnualizedYield>
           </LcCard>
         </Col> : null}
 
         <Col span={12}>
-          <LcCard>
-            <div>
-              <div className="titieWrap">
-                <span className="tableTitle">投资端分类统计表</span>
-                <span className="monetaryUnit">单位:万元</span>
-              </div>
-              <TableInvest></TableInvest>
-            </div>
+          <LcCard title={'投资端分类统计表'} extra={<span>单位:万元</span>}>
+            <TableInvest></TableInvest>
           </LcCard>
         </Col>
         <Col span={12}>
-          <LcCard >
-            <div>
-              <div className="titieWrap">
-                <span className="tableTitle">投资端分布情况</span>
-                <span className="monetaryUnit">单位:万元</span>
-              </div>
+          <LcCard title={'投资端分布情况'} >
               <BarInvest data={barInvest}></BarInvest>
-            </div>
           </LcCard>
         </Col>
 
         <Col span={24}>
-          <LcCard>
-            <div className="titieWrap titleRelative">
-              <span className="tableTitle titleFloat">历史资产配置</span>
-              <LineHistoryAsset data={historyAsset}></LineHistoryAsset>
-            </div>
+          <LcCard title={'历史资产配置'}>
+            <LineHistoryAsset data={historyAsset}></LineHistoryAsset>
           </LcCard>
         </Col>
 
         <Col span={12}>
-          <LcCard>
-            {/* 前十投资者分布 */}
-            <div >
-              <div className="titieWrap">
-                <span className="tableTitle">前十投资者分布</span>
-                <span className="monetaryUnit">单位:万元</span>
-              </div>
+          <LcCard title={'前十投资者分布'} extra={<span>单位:万元</span>}>
               <TableTopInvestor></TableTopInvestor>
-            </div>
           </LcCard>
         </Col>
         <Col span={12}>
-          <LcCard>
-            <div className=" titieWrap">
-              <span className="tableTitle ">客户数分布情况</span>
-            </div>
+          <LcCard title={'客户分布情况'}>
             <div className="customerWrap">
               {/*  个人客户总数  */}
               <div className="customerleft">

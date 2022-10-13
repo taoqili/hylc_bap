@@ -91,21 +91,12 @@ export default () => {
           </LcCard>
         </Col>
         <Col span={16}>
-          <LcCard>
-            {/* 现金流分布 */}
-            <div className="titieWrap">
-              <span className="tableTitle">现金流分布</span>
-            </div>
+          <LcCard title={'现金流分布'}>
             <BarCashFlow data={barCashFlow}></BarCashFlow>
           </LcCard>
         </Col>
         <Col span={24}>
-          <LcCard>
-            {/* 现金流分析表 */}
-            <div className="titieWrap">
-              <span className="tableTitle">产品净资产走势</span>
-              <span className="monetaryUnit">单位:万元</span>
-            </div>
+          <LcCard title={'产品净资产走势'} extra={<span>单位:万元</span>}>
             <TableCashFlow></TableCashFlow>
           </LcCard>
         </Col>

@@ -36,12 +36,11 @@ module.exports = ({onGetWebpackConfig, context}) => {
     config.devServer.proxy({
       '/api': {
         target: 'http://158.1.3.146:8065',
-        secure: false,
         pathRewrite: {
           '^/api': ''
         },
         cookiePathRewrite: {
-          '*': '/'
+          '*': ''
         },
         changeOrigin: true
       },

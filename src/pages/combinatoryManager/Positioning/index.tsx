@@ -42,9 +42,7 @@ const bondColumns = [
     dataIndex: 'Mature_Reve_Rate',
     align: 'right',
     render(value: any) {
-      return (
-        <Trends data={[{value}]}></Trends>
-      )
+      return <Trends data={[{value}]} />
     }
   },
   {
@@ -62,7 +60,6 @@ const stockColumns = [
     dataIndex: 'Class',
     ellipsis: true,
     align: 'right'
-
   },
   {
     key: 'MakePos_Cost',
@@ -83,9 +80,7 @@ const stockColumns = [
     dataIndex: 'floating_amt',
     align: 'right',
     render(value: any) {
-      return <Trends align={'right'} data={[
-        {title: '', value: value}
-      ]}/>
+      return <Trends align={'right'} data={[{value}]}/>
     }
   },
   {
@@ -111,9 +106,7 @@ const nonstandardColumns = [
     dataIndex: 'Asset_Bal',
     align: 'right',
     render(value: any) {
-      return <Trends align={'right'} data={[
-        {title: '', value: value}
-      ]}/>
+      return <Trends align={'right'} data={[{value}]}/>
     }
   },
   {

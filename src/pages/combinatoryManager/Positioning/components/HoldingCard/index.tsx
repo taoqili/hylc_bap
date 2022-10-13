@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react"
 import LcCard from '@/components/LcCard'
 import Charts from '@/components/Charts'
 import LcTable from '@/components/LcTable'
+import { Row, Col } from 'antd'
 import ButtonGroup, { ButtonProps } from '@/components/ButtonGroup'
 import { formatChartSource, formatMoney, pickGroups } from "@/utils"
 import './index.less'
@@ -163,18 +164,22 @@ export default (props: BondHoldingProps) => {
           </div>
         }
       >
-        <div className={'card-content'}>
-          <div className={'table'}>
-            <LcTable
-              columns={columns}
-              dataSource={curDataSource}
-              scroll={curChartSource.length > 7 ? {y: 308}: undefined}
-            />
-          </div>
-          <div className={'chart'}>
-            <Charts option={option} style={{height: 372}}/>
-          </div>
-        </div>
+        <Row gutter={[16, 16]} className={'card-content'}>
+          <Col span={12}>
+            <div className={'table'}>
+              <LcTable
+                columns={columns}
+                dataSource={curDataSource}
+                scroll={curDataSource.length > 7 ? {y: 308} : undefined}
+              />
+            </div>
+          </Col>
+          <Col span={12}>
+            <div className={'chart'}>
+              <Charts option={option} style={{height: 372}}/>
+            </div>
+          </Col>
+        </Row>
       </LcCard>
     </div>
   )
