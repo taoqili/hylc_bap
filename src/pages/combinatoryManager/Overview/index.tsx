@@ -13,6 +13,7 @@ import PieCustomer from './pieCustomer'
 import './index.less'
 import { getAssets } from "@/utils";
 import IndicatorCard from "@/components/IndicatorCard";
+import { useSearchParams } from "react-router-dom";
 
 interface CombinatoryOverviewProps {
   type?: 'multiple' | 'single',
@@ -151,6 +152,10 @@ export default (props: CombinatoryOverviewProps) => {
   }
 
   const { type = 'multiple' } = props
+
+  const [searchParams] = useSearchParams()
+  const name = searchParams.get('name')
+  console.log(name, 'name-----')
   return (
     <div className={'overview-wrapper'}>
       <Row gutter={[16, 16]}>
