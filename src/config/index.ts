@@ -3,9 +3,7 @@ export * from './routes'
 
 export const isQiankun = (window as any).__POWERED_BY_QIANKUN__
 // 路由根路经
-export const rootPath = isQiankun ? '/ve/' : '/'
-
-
+export const rootPath = isQiankun ? '/hylc_bap/' : '/'
 
 // 接口路经
 export const apiBaseUrl = process.env.API_BASE_URL

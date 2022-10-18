@@ -1,17 +1,17 @@
 import React, {lazy} from 'react'
 import { RouteProps } from 'react-router-dom'
 
-const Render = lazy(() => import('@/pages/Render'))
+//TODO 微前端内有问题，暂时改成同步加载
+// const CombinatoryOverview = lazy(() => import('@/pages/combinatoryManager/Overview'))
+// const CombinatoryCashflow = lazy(() => import('@/pages/combinatoryManager/Cashflow'))
+// const CombinatoryPositioning = lazy(() => import('@/pages/combinatoryManager/Positioning'))
 
-const CombinatoryOverview = lazy(() => import('@/pages/combinatoryManager/Overview'))
-const CombinatoryCashflow = lazy(() => import('@/pages/combinatoryManager/Cashflow'))
-const CombinatoryPositioning = lazy(() => import('@/pages/combinatoryManager/Positioning'))
+import CombinatoryOverview from '@/pages/combinatoryManager/Overview'
+import CombinatoryCashflow from '@/pages/combinatoryManager/Cashflow'
+import CombinatoryPositioning from '@/pages/combinatoryManager/Positioning'
+
 
 export const routes: RouteProps[] =  [
-  {
-    path: '/render/:module/:page',
-    element: <Render />
-  },
   {
     path: '/combinatory/overview',
     element: <CombinatoryOverview />

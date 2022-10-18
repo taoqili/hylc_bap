@@ -9,7 +9,7 @@ export const menus: MenuProps[] = [
   {
     key: 'home',
     path: '/',
-    label: '首页'
+    label: '组合分析首页'
   },
   {
     key: 'combinatoryOverview',

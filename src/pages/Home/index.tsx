@@ -19,10 +19,9 @@ export default () => {
   }, [])
   return (
     <div>
-      <h2>Home page</h2>
-      <div>直接引用图片</div>
+      <h2>平台首页</h2>
+      <div>可以放一些平台介绍、模块入口之类的东东</div>
       <img src={getAssets('img/asset.png')} alt=""/>
-      <div className={'test-class'}>背景图</div>
     </div>
   );
 }
