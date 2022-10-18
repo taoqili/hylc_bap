@@ -147,6 +147,7 @@ export default (props: BondHoldingProps) => {
   const onActionChange = useCallback((event) => {
     const {target} = event
     setCurAction(target.value)
+    console.log('curAction',curAction)
   }, [])
 
   return (
