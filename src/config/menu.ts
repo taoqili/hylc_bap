@@ -14,12 +14,7 @@ export const menus: MenuProps[] = [
   {
     key: 'combinatoryOverview',
     path: '/combinatory/overview',
-    label: '组合总揽多产品',
-  },
-  {
-    key: 'combinatoryOverviewSingle',
-    path: '/combinatory/overview/single',
-    label: '组合总揽单产品',
+    label: '组合总揽',
   },
   {
     key: 'combinatoryCashflow',

@@ -17,10 +17,6 @@ export const routes: RouteProps[] =  [
     element: <CombinatoryOverview />
   },
   {
-    path: '/combinatory/overview/single',
-    element: <CombinatoryOverview type={'single'} />
-  },
-  {
     path: '/combinatory/cashflow',
     element: <CombinatoryCashflow />
   },

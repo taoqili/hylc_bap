@@ -15,4 +15,42 @@
   .lc-bap-main {
     min-height: 800px;
   }
+  .lc-bap-filter {
+    padding: 16px;
+    .filter-wrapper {
+      .filter-item {
+        display: flex;
+        margin-bottom: 12px;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+        .label {
+          font-size: 12px;
+          flex: 1;
+          color: #7E8284;
+        }
+        .ant-select {
+          width: 100%;
+        }
+        .ant-picker {
+          padding: 4px 6px 4px;
+          width: 112px;
+        }
+      }
+      .filter-confirm {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0 20px;
+        > button {
+          padding: 0 20px;
+          border-radius: 8px;
+          &:first-child {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
+
 }
