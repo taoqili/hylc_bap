@@ -3,16 +3,13 @@ import { Col, Row } from "antd"
 import IndicatorCard from '@/components/IndicatorCard'
 import HoldingCard from "./components/HoldingCard";
 import AssetRatioChart from './components/AssetRatioChart'
-import assetImg from '@/assets/img/asset.png'
-import debtImg from '@/assets/img/debt.png'
-import netValueImg from '@/assets/img/net-value.png'
 import './index.less'
 
 import bondData from './mock/bondData'
 import stockData from "./mock/stockData"
 import nonstandardData from './mock/nonstandardData'
 import Trends from "@/components/Trends";
-import { formatMoney } from "@/utils";
+import { formatMoney, getAssets } from "@/utils";
 const bondColumns = [
   {
     key: 'Asset_Class',
@@ -150,7 +147,7 @@ export default () => {
             value={formatMoney('23211326')}
             unit={'亿'}
             trendsDirection={'v'}
-            titleIcon={assetImg}
+            titleIcon={<img width={22} src={getAssets('img/combinatory/asset.png')} alt="" />}
             trends={[
               {title: '余额', value: '300025', unit: '亿', formatter: (value) => formatMoney(value)},
               {title: '比上月', value: '0', unit: '%'},
@@ -174,7 +171,7 @@ export default () => {
           <IndicatorCard
             title={'总负债规模'}
             value={'34342500'}
-            titleIcon={debtImg}
+            titleIcon={<img width={22} src={getAssets('img/combinatory/debt.png')} alt="" />}
             height={110}
             trends={[
               {title: '比上月', value: '13.5', unit: '%'}
@@ -185,7 +182,7 @@ export default () => {
           <IndicatorCard
             title={'总净值规模'}
             value={'31423601'}
-            titleIcon={netValueImg}
+            titleIcon={<img width={22} src={getAssets('img/combinatory/net-value.png')} alt="" />}
             height={110}
             trends={[
               {title: '比上年', value: '11.2', unit: '%'}
