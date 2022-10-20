@@ -16,6 +16,7 @@ export default (props: Record<any, any>) => {
       ROUTE_CHANGE: fullPath,
     })
   }, [location.pathname, location.search])
+
   return (
     <div className={'lc-bap-view-wrapper'}>
       <Routes>
