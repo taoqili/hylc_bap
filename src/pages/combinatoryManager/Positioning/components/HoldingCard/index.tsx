@@ -45,7 +45,7 @@ export default (props: BondHoldingProps) => {
   const getCurDataSource = (
     dataSource: Record<string, any> [],
     actions: ButtonProps[],
-    dataIndex: string = 'Index_Cd'
+    dataIndex: string = 'INDEX_CD'
   ) => {
     const groupNames = actions.reduce((prev: string[], cur: ButtonProps): any => {
       prev.push(cur.value)
@@ -54,7 +54,6 @@ export default (props: BondHoldingProps) => {
     const groups = pickGroups(dataSource, groupNames, dataIndex)
     return groups[curAction || groupNames[0]]
   }
-
   const curDataSource = !actions.length ? dataSource : getCurDataSource(dataSource, actions)
   const curChartSource = formatChartSource(curDataSource, dimensions)
 

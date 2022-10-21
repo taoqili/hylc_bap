@@ -20,13 +20,13 @@ export default (props: AssetRatioProps) => {
         const { data }  = option.series[0]
         let total = 0;
         for (let i = 0; i < data.length; i++) {
-          total += data[i].value;
+          total += (Number(data[i].value || 0));
         }
         for (let i = 0; i < data.length; i++) {
-          const percent = (data[i].value / total * 100).toFixed(2) + '%'
+          const percent = (Number(data[i].value|| 0) / total * 100).toFixed(2) + '%'
           if (data[i].name === name) {
             // 可以显示名称和值和百分比
-            return name + ' ' + data[i].value + '亿 ' + percent
+            return name + '　' + Number(data[i].value||0) + '亿　' + percent
           }
         }
       }
